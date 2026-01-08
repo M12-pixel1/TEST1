@@ -46,6 +46,62 @@ npm run build
 npm start
 ```
 
+## 60-Second Demo Steps
+
+### Prerequisites
+```bash
+cd apps/web
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 in your browser.
+
+### E2E Workflow Demo
+
+#### 1. CREATE (as AUTHOR) - 10 seconds
+- Role: **AUTHOR** (author@test.com) - default role
+- Click **"Create New Case"**
+- Fill in:
+  - Title: "Test Case Demo"
+  - Description: "Testing the complete workflow"
+- Click **"Create Case"**
+- Status: **DRAFT**
+
+#### 2. UPLOAD (as AUTHOR) - 10 seconds
+- You're now on the case detail page
+- Under "Upload Attachment", click **"Choose File"**
+- Select any file from your computer
+- Click **"Upload"**
+- File appears in the "Attachments" section
+
+#### 3. DRAFT → REVIEW (as AUTHOR) - 5 seconds
+- Click **"Submit for Review"** button
+- Status changes from **DRAFT** to **REVIEW**
+- Upload section disappears (no more uploads allowed)
+
+#### 4. REVIEW → APPROVED (as APPROVER) - 15 seconds
+- Switch role: Top-right dropdown → **APPROVER** (approver@test.com)
+- Page reloads showing the case in REVIEW status
+- Click **"Approve"** button
+- Status changes from **REVIEW** to **APPROVED**
+
+#### 5. EXPORT ZIP (as APPROVER) - 10 seconds
+- Click **"Export Case"** button
+- Browser downloads file: `case-{id}-export.zip`
+- ✅ **E2E workflow complete!**
+
+---
+
+### Key Features Demonstrated
+✅ Role-based access control (AUTHOR vs APPROVER)  
+✅ Case lifecycle: DRAFT → REVIEW → APPROVED  
+✅ File upload functionality  
+✅ Status transition validation  
+✅ ZIP export/download for approved cases  
+
+**Total Time: ~50 seconds** (10 seconds buffer for file selection)
+
 ## Usage
 
 ### Role Switching
