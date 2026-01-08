@@ -13,7 +13,7 @@ interface Case {
   createdAt: string
 }
 
-export default function CaseListPage() {
+export default function CasesPage() {
   const { email, role } = useAuth()
   const [cases, setCases] = useState<Case[]>([])
   const [loading, setLoading] = useState(true)
