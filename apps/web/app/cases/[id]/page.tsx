@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
-import { useAuth } from '@/app/lib/auth-context'
-import { apiFetch } from '@/app/lib/api-fetch'
+import { useAuth } from '@/app/lib/auth'
+import { apiFetch } from '@/app/lib/api'
+import { downloadFromUrl } from '@/app/lib/download'
 import Link from 'next/link'
 
 interface Case {
@@ -111,18 +112,9 @@ export default function CaseDetailPage() {
       
       const data = await response.json()
       
-      // Download the file
+      // Download the file using the download utility
       if (data.path) {
-        const downloadResponse = await fetch(data.path)
-        const blob = await downloadResponse.blob()
-        const url = window.URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = `case-${caseId}-export.zip`
-        document.body.appendChild(a)
-        a.click()
-        window.URL.revokeObjectURL(url)
-        document.body.removeChild(a)
+        await downloadFromUrl(data.path, `case-${caseId}-export.zip`)
       }
     } catch (err) {
       alert(err instanceof Error ? err.message : 'Failed to export case')

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { AuthProvider } from '@/app/lib/auth-context'
-import { RoleSwitcher } from '@/app/lib/role-switcher'
+import { AuthProvider } from '@/app/lib/auth'
+import { AuthBar } from '@/app/components/AuthBar'
 
 export const metadata: Metadata = {
   title: 'Case Management',
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <RoleSwitcher />
+          <AuthBar />
           <main style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto', paddingTop: '80px' }}>
             {children}
           </main>

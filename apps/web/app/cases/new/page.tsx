@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useAuth } from '@/app/lib/auth-context'
-import { apiFetch } from '@/app/lib/api-fetch'
+import { useAuth } from '@/app/lib/auth'
+import { apiFetch } from '@/app/lib/api'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
