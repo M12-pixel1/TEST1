@@ -9,6 +9,10 @@ function renderAuthGate() {
     if (bar) bar.style.display = 'block';
     const info = document.getElementById('user-info');
     if (info) info.textContent = window.api.currentUser.email + ' (' + window.api.currentUser.role + ')';
+    var mgrLink = document.getElementById('manager-link');
+    if (mgrLink && (window.api.currentUser.role === 'manager' || window.api.currentUser.role === 'admin')) {
+      mgrLink.style.display = 'inline-block';
+    }
     return true;
   }
   if (gate) gate.style.display = 'block';

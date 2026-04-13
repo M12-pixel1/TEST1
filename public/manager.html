@@ -71,7 +71,16 @@ async function loadTeam() {
            'Rekomenduojamas veiksmas: ' + s.recommendedAction + '</div>';
     }
     c.innerHTML = h;
-  } catch(e) { c.innerHTML = '<p style="color:red">Klaida: ' + e.message + '</p>'; }
+  } catch(e) {
+    if (e.message && e.message.indexOf('Manager role required') !== -1) {
+      c.innerHTML = '<div style="padding:20px;background:#fff3cd;border:1px solid #ffc107;border-radius:6px;margin:10px 0;">' +
+        '<strong>Neturite prieigos.</strong><br>' +
+        'Si panele prieinama tik vadovams. Prisijunkite vadovo paskyra arba kreipkites i administratoriu.' +
+        '</div>';
+    } else {
+      c.innerHTML = '<p style="color:red">Klaida: ' + e.message + '</p>';
+    }
+  }
 }
 
 async function loadFaults() {
@@ -93,7 +102,22 @@ async function loadFaults() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  if (window.api.isAuthenticated) { loadTeam(); loadFaults(); }
+  if (window.api.isAuthenticated) {
+    var user = window.api.currentUser;
+    if (user && user.role !== 'manager' && user.role !== 'admin') {
+      document.getElementById('team-signals').innerHTML =
+        '<div style="padding:20px;background:#fff3cd;border:1px solid #ffc107;border-radius:6px;">' +
+        '<strong>Neturite prieigos.</strong><br>' +
+        'Jus prisijunges kaip <b>' + user.role + '</b>. Si panele prieinama tik vadovams.<br><br>' +
+        'Prisijunkite vadovo paskyra:<br>' +
+        'El. pastas: <code>vadovas@augimo.lt</code><br>' +
+        'Slaptazodis: <code>vadovas123</code>' +
+        '</div>';
+      document.getElementById('system-faults').innerHTML = '';
+      return;
+    }
+    loadTeam(); loadFaults();
+  }
   var rb = document.getElementById('refresh-btn');
   if (rb) rb.addEventListener('click', function() { loadTeam(); loadFaults(); });
 });

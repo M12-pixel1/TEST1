@@ -5,8 +5,8 @@ export const adminRoutes: FastifyPluginAsync = async (fastify) => {
     onRequest: [fastify.authenticate],
     handler: async (request, reply) => {
       const user = request.user as { role: string };
-      if (user.role !== 'admin') {
-        return reply.code(403).send({ error: 'Admin role required' });
+      if (user.role !== 'admin' && user.role !== 'manager') {
+        return reply.code(403).send({ error: 'Manager or admin role required' });
       }
       const faults = await fastify.antiEngine.analyzeSystemFaults(7);
       return { faults };
