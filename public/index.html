@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Augimo Programa V1.2</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #333; }
+    h1 { color: #1a1a2e; }
+    h2 { color: #16213e; border-bottom: 2px solid #0f3460; padding-bottom: 6px; margin-top: 30px; }
+    #auth-gate { max-width: 480px; margin: 60px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    #auth-gate h2 { text-align: center; margin-top: 0; }
+    #auth-gate form { margin-bottom: 20px; }
+    #auth-gate input, #auth-gate select { display: block; width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    #auth-gate button { display: block; width: 100%; padding: 12px; margin-top: 10px; background: #0f3460; color: #fff; border: none; border-radius: 4px; font-size: 15px; cursor: pointer; }
+    #auth-gate button:hover { background: #16213e; }
+    #auth-gate hr { margin: 20px 0; border: none; border-top: 1px solid #ddd; }
+    #user-bar { display: none; padding: 10px 20px; background: #1a1a2e; color: #e0e0e0; font-size: 13px; }
+    #user-bar button { float: right; background: transparent; color: #e94560; border: 1px solid #e94560; padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+    #main-ui { display: none; max-width: 800px; margin: 0 auto; padding: 20px; }
+    section { background: #fff; padding: 20px; margin: 16px 0; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+    .btn-primary { padding: 10px 20px; background: #0f3460; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 4px 2px; }
+    .btn-primary:hover { background: #16213e; }
+    .btn-option { padding: 8px 16px; background: #e8e8e8; border: 1px solid #bbb; border-radius: 4px; cursor: pointer; margin: 4px; font-size: 13px; }
+    .btn-option:hover { background: #d0d0d0; }
+    input[type="text"], textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; margin: 6px 0; }
+    ul { padding-left: 20px; }
+    li { margin: 8px 0; line-height: 1.5; }
+    a.nav-link { display: inline-block; margin-top: 10px; color: #0f3460; }
+  </style>
+</head>
+<body>
+
+<div id="auth-gate">
+  <h2>Augimo Programa</h2>
+  <form id="login-form">
+    <h3>Prisijungimas</h3>
+    <input id="login-email" type="email" placeholder="El. pastas" required>
+    <input id="login-password" type="password" placeholder="Slaptazodis" required>
+    <button type="submit">Prisijungti</button>
+    <div id="login-error" style="color:#e94560;margin-top:6px;font-size:13px;"></div>
+  </form>
+  <hr>
+  <form id="register-form">
+    <h3>Naujas vartotojas</h3>
+    <input id="register-email" type="email" placeholder="El. pastas" required>
+    <input id="register-password" type="password" placeholder="Slaptazodis (min 8 simboliai)" required minlength="8">
+    <select id="register-role">
+      <option value="learner">Besimokantis</option>
+      <option value="manager">Vadovas</option>
+    </select>
+    <button type="submit">Registruotis</button>
+    <div id="register-error" style="color:#e94560;margin-top:6px;font-size:13px;"></div>
+  </form>
+</div>
+
+<div id="user-bar">
+  <span id="user-info"></span>
+  <button id="logout-btn">Atsijungti</button>
+</div>
+
+<div id="main-ui">
+  <h1>Augimo Programa V1.2</h1>
+
+  <section>
+    <h2>1. Diagnostika</h2>
+    <button class="btn-primary" id="start-diagnostic-btn">Pradeti diagnostika</button>
+    <div id="diagnostic-area"></div>
+  </section>
+
+  <section>
+    <h2>2. Sekantis zingsnis</h2>
+    <button class="btn-primary" id="show-next-step-btn">Rodyti sekanti zingsni</button>
+    <div id="next-step-area"></div>
+  </section>
+
+  <section>
+    <h2>3. Praktika</h2>
+    <button class="btn-primary" id="start-practice-btn">Pradeti praktika</button>
+    <div id="practice-area"></div>
+  </section>
+
+  <section>
+    <h2>4. Progreso irodymas</h2>
+    <button class="btn-primary" id="show-progress-btn">Rodyti progreso irodyma</button>
+    <div id="progress-area"></div>
+  </section>
+
+  <a class="nav-link" href="/manager.html">Vadovo panele &rarr;</a>
+</div>
+
+<script src="/js/api-client.js"></script>
+<script src="/js/auth-ui.js"></script>
+<script src="/js/main-flow.js"></script>
+</body>
+</html>
