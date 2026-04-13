@@ -1,0 +1,28 @@
+{
+  "name": "repo-foundation-v1",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "lint": "eslint 'app/src/**/*.ts'",
+    "lint:legacy": "node scripts/lint.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node --test app/tests/*.test.ts app/tests/**/*.test.ts",
+    "test:coverage": "node --test --experimental-test-coverage app/tests/*.test.ts app/tests/**/*.test.ts",
+    "build:browser": "tsc -p tsconfig.browser.json",
+    "pilot:init": "node scripts/pilot-init.mjs",
+    "pilot:reset": "node scripts/pilot-reset.mjs --force",
+    "pilot:reset:safe": "node scripts/pilot-reset-safe.mjs"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
+    "eslint": "^10.2.0"
+  }
+}

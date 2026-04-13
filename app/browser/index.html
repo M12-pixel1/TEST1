@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnostic Flow</title>
+  </head>
+  <body>
+    <main>
+      <h1>Diagnostic</h1>
+      <p id="progress-text"></p>
+      <p id="question-text"></p>
+      <input id="answer-input" type="text" placeholder="Your answer" />
+      <div>
+        <button id="start-button">Start diagnostic</button>
+        <button id="next-button">Next</button>
+        <button id="show-next-step-button">Show next step</button>
+        <button id="show-progress-proof-button">Show progress proof</button>
+      </div>
+      <p id="completion-text"></p>
+
+      <section>
+        <h2 id="snapshot-title"></h2>
+        <p id="snapshot-skills"></p>
+        <p id="snapshot-strength"></p>
+        <p id="snapshot-focus"></p>
+        <p id="snapshot-next-action"></p>
+      </section>
+
+      <section>
+        <h2>Next Step</h2>
+        <p id="next-step-today-action"></p>
+        <p id="next-step-week-plan"></p>
+        <p id="next-step-month-focus"></p>
+      </section>
+
+      <section>
+        <h2>Practice</h2>
+        <button id="start-practice-button">Start practice</button>
+        <p id="practice-task-title"></p>
+        <p id="practice-task-prompt"></p>
+        <input id="practice-response-input" type="text" placeholder="Your practice response" />
+        <button id="submit-practice-button">Submit practice</button>
+        <p id="practice-feedback"></p>
+      </section>
+
+      <section>
+        <h2>Progress Proof</h2>
+        <p id="progress-baseline-ref"></p>
+        <p id="progress-current-focus"></p>
+        <p id="progress-attempts-count"></p>
+        <p id="progress-latest-feedback"></p>
+        <p id="progress-next-action"></p>
+        <p id="progress-updated-at"></p>
+      </section>
+    </main>
+
+    <script type="module" src="./dist/browser/main.js"></script>
+  </body>
+</html>
