@@ -48,7 +48,7 @@ await fastify.register(fjwt, {
 });
 
 await fastify.register(fstatic, {
-  root: join(__dirname, 'app', 'browser'),
+  root: join(__dirname, 'public'),
   prefix: '/',
   decorateReply: true,
 });

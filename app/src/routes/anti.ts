@@ -5,6 +5,7 @@ import { VisibilityLayer } from '../anti/types.ts';
 export const antiRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post('/analyze', {
     onRequest: [fastify.authenticate],
+    schema: { body: { type: 'object', additionalProperties: true } },
     handler: async (request) => {
       const userId = (request.user as { id: string }).id;
       const result = await fastify.antiEngine.analyzeUser(userId);
