@@ -18,9 +18,16 @@
     "pilot:reset:safe": "node scripts/pilot-reset-safe.mjs"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0"
+    "@fastify/cors": "^11.2.0",
+    "@fastify/jwt": "^10.0.0",
+    "@fastify/static": "^9.1.0",
+    "bcrypt": "^6.0.0",
+    "fastify": "^5.8.4",
+    "jose": "^6.2.2",
+    "pg": "^8.20.0"
   },
   "devDependencies": {
+    "@types/pg": "^8.20.0",
     "@typescript-eslint/eslint-plugin": "^8.58.1",
     "@typescript-eslint/parser": "^8.58.1",
     "eslint": "^10.2.0"
