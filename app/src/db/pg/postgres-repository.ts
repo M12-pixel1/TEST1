@@ -40,7 +40,7 @@ export class PostgresRepository implements Repository {
   async recordSignalEvent(event: SignalEventInput): Promise<SignalEventRow> {
     const result = await this.pool.query(
       `INSERT INTO signal_events (user_id, session_id, task_id, event_type, raw_data)
-       VALUES ($1::uuid, $2::uuid, $3::uuid, $4, $5)
+       VALUES ($1::uuid, $2, $3, $4, $5)
        RETURNING *`,
       [event.userId, event.sessionId ?? null, event.taskId ?? null,
        event.eventType, JSON.stringify(event.rawData)]
@@ -72,7 +72,7 @@ export class PostgresRepository implements Repository {
     const result = await this.pool.query(
       `INSERT INTO anti_signals_v2
        (user_id, signal_type, strength, severity, confidence, related_task_id, recommended_action)
-       VALUES ($1::uuid, $2, $3, $4, $5, $6::uuid, $7)
+       VALUES ($1::uuid, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
       [signal.userId, signal.signalType, signal.strength, signal.severity,
        signal.confidence, signal.relatedTaskId, signal.recommendedAction]
